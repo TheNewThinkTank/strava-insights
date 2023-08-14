@@ -1,10 +1,48 @@
+"""
+Analyze and plot strava activities
+"""
+
+import matplotlib.pyplot as plt
 import pandas as pd
+import seaborn as sns
 
 df = pd.read_csv("activities.csv")
 
 # print(df.head())
-
 # print(df.columns)
+
+df = df[df["Activity Type"] == "Run"]
+
+df = df[[
+    "Activity Date",
+    "Elapsed Time",
+    "Distance",
+    "Moving Time",
+    "Average Speed"
+]]
+
+df = df.set_index(df["Activity Date"])
+df = df.drop(columns=["Activity Date"])
+print(df.head())
+# df = df.sort_values(ascending=False)
+
+plt.figure(figsize=(12, 6))
+plt.subplots_adjust(bottom=0.4)
+
+ax = sns.barplot(
+    x=df.index,
+    y=df["Distance"],
+    # hue=df["Elapsed Time"]  # df["Moving Time"]
+    )
+
+ax.set(xlabel="Date & time", ylabel="Distance (km)")
+plt.title("Runs")
+plt.xticks(rotation=90)
+# plt.ylabel("", rotation=0)
+# ax.yaxis.set_label_coords(-0.1, 0.5)
+# plt.show()
+plt.savefig("all_runs.png")
+
 
 cols = [
     "Activity ID",
