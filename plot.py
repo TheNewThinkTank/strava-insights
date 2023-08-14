@@ -48,7 +48,7 @@ print(df.head())
 
 # Time Series Plot
 plt.figure(figsize=(10, 6))
-plt.plot(df["Activity Date"], df['Distance'], marker='o')
+plt.plot(df.index, df['Distance'], marker='o')
 plt.xlabel('Activity Date')
 plt.ylabel('Distance')
 plt.title('Distance Over Time')
@@ -56,28 +56,30 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
 
-# Histograms
-plt.figure(figsize=(12, 6))
-plt.subplot(1, 3, 1)
-plt.hist(df['Elapsed Time'], bins=20)
-plt.xlabel('Elapsed Time')
-plt.ylabel('Frequency')
-plt.title('Elapsed Time Histogram')
+# Bar Plot for Activities Over Time
+df.index = pd.to_datetime(df.index)  # Convert index to datetime if needed
+df['Month'] = df.index.to_period('M')
+activity_counts = df['Month'].value_counts().sort_index()
 
-plt.subplot(1, 3, 2)
-plt.hist(df['Distance'], bins=20)
-plt.xlabel('Distance')
-plt.ylabel('Frequency')
-plt.title('Distance Histogram')
-
-plt.subplot(1, 3, 3)
-plt.hist(df['Moving Time'], bins=20)
-plt.xlabel('Moving Time')
-plt.ylabel('Frequency')
-plt.title('Moving Time Histogram')
-
+plt.figure(figsize=(10, 6))
+sns.barplot(x=activity_counts.index, y=activity_counts.values)
+plt.xlabel('Month')
+plt.ylabel('Number of Activities')
+plt.title('Number of Activities per Month')
+plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
+
+# Line Plot for Average Speed
+plt.figure(figsize=(10, 6))
+plt.plot(df.index, df['Average Speed'], marker='o')
+plt.xlabel('Activity Date')
+plt.ylabel('Average Speed')
+plt.title('Average Speed Over Time')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
 
 # Scatter Plot
 plt.figure(figsize=(8, 6))
