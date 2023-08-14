@@ -21,27 +21,111 @@ df = df[[
     "Average Speed"
 ]]
 
-df = df.set_index(df["Activity Date"])
-df = df.drop(columns=["Activity Date"])
+# TODO: string to datetime, example: Feb 22, 2021, 10:30:06 AM
+
+# df = df.set_index(df["Activity Date"])
+# df = df.drop(columns=["Activity Date"])
 print(df.head())
 # df = df.sort_values(ascending=False)
 
-plt.figure(figsize=(12, 6))
-plt.subplots_adjust(bottom=0.4)
+# plt.figure(figsize=(12, 6))
+# plt.subplots_adjust(bottom=0.4)
 
-ax = sns.barplot(
-    x=df.index,
-    y=df["Distance"],
-    # hue=df["Elapsed Time"]  # df["Moving Time"]
-    )
+# ax = sns.barplot(
+#     x=df.index,
+#     y=df["Distance"],
+#     # hue=df["Elapsed Time"]  # df["Moving Time"]
+#     )
 
-ax.set(xlabel="Date & time", ylabel="Distance (km)")
-plt.title("Runs")
-plt.xticks(rotation=90)
+# ax.set(xlabel="Date & time", ylabel="Distance (km)")
+# plt.title("Runs")
+# plt.xticks(rotation=90)
 # plt.ylabel("", rotation=0)
 # ax.yaxis.set_label_coords(-0.1, 0.5)
 # plt.show()
-plt.savefig("all_runs.png")
+# plt.savefig("all_runs.png")
+
+
+# Time Series Plot
+plt.figure(figsize=(10, 6))
+plt.plot(df["Activity Date"], df['Distance'], marker='o')
+plt.xlabel('Activity Date')
+plt.ylabel('Distance')
+plt.title('Distance Over Time')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+# Histograms
+plt.figure(figsize=(12, 6))
+plt.subplot(1, 3, 1)
+plt.hist(df['Elapsed Time'], bins=20)
+plt.xlabel('Elapsed Time')
+plt.ylabel('Frequency')
+plt.title('Elapsed Time Histogram')
+
+plt.subplot(1, 3, 2)
+plt.hist(df['Distance'], bins=20)
+plt.xlabel('Distance')
+plt.ylabel('Frequency')
+plt.title('Distance Histogram')
+
+plt.subplot(1, 3, 3)
+plt.hist(df['Moving Time'], bins=20)
+plt.xlabel('Moving Time')
+plt.ylabel('Frequency')
+plt.title('Moving Time Histogram')
+
+plt.tight_layout()
+plt.show()
+
+# Scatter Plot
+plt.figure(figsize=(8, 6))
+plt.scatter(df['Elapsed Time'], df['Distance'])
+plt.xlabel('Elapsed Time')
+plt.ylabel('Distance')
+plt.title('Scatter Plot: Elapsed Time vs. Distance')
+plt.tight_layout()
+plt.show()
+
+# from datetime import datetime as dt
+
+# Bar Plot for Activities Over Time (assuming 'Activity Date' is in datetime format)
+df['Month'] = df["Activity Date"].dt.to_period('M')
+activity_counts = df['Month'].value_counts().sort_index()
+
+plt.figure(figsize=(10, 6))
+sns.barplot(x=activity_counts.index, y=activity_counts.values)
+plt.xlabel('Month')
+plt.ylabel('Number of Activities')
+plt.title('Number of Activities per Month')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+# Line Plot for Average Speed
+plt.figure(figsize=(10, 6))
+plt.plot(df['Activity Date'], df['Average Speed'], marker='o')
+plt.xlabel('Activity Date')
+plt.ylabel('Average Speed')
+plt.title('Average Speed Over Time')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+# Correlation Heatmap
+correlation_matrix = df.corr()
+plt.figure(figsize=(8, 6))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
+plt.title('Correlation Heatmap')
+plt.tight_layout()
+plt.show()
+
+# Pair Plot
+sns.pairplot(df[['Elapsed Time', 'Distance', 'Moving Time', 'Average Speed']])
+plt.suptitle('Pair Plot')
+plt.tight_layout()
+plt.show()
 
 
 cols = [
