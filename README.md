@@ -3,7 +3,7 @@
 Analysis and visualization of Strava activities
 
 Below: all runs uploaded to Strava
-![All Strava runs](all_runs.png)
+![All Strava runs](img/all_runs.png)
 
 ## Data
 
