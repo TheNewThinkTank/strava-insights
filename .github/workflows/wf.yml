@@ -49,8 +49,12 @@
           #   with:
           #     files: src/
 
-          - name: Install modules
-            run: npx install
+          - uses: actions/setup-node@v3
+            with:
+              node-version: 18
+              cache: 'npm'
+          # - run: npm ci
+          # - run: npm test
 
           - name: Run ESLint
             run: eslint src/ --ext .js,.jsx,.ts,.tsx
