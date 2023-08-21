@@ -48,3 +48,9 @@
           # - uses: stefanoeb/eslint-action@1.0.2
           #   with:
           #     files: src/
+
+          - name: Install modules
+            run: npx install
+
+          - name: Run ESLint
+            run: eslint src/ --ext .js,.jsx,.ts,.tsx
