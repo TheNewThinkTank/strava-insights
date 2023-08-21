@@ -1,4 +1,7 @@
+![commit activity](https://img.shields.io/github/commit-activity/m/TheNewThinkTank/strava-insights)
+![CI](https://github.com/TheNewThinkTank/strava-insights/actions/workflows/wf.yml/badge.svg)
 [![GitHub repo size](https://img.shields.io/github/repo-size/TheNewThinkTank/strava-insights?style=flat&logo=github&logoColor=whitesmoke&label=Repo%20Size)](https://github.com/TheNewThinkTank/strava-insights/archive/refs/heads/main.zip)
+
 # strava-insights
 Analysis and visualization of Strava activities
 
