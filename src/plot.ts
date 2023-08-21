@@ -1,7 +1,4 @@
-// dependency: npm install chart.js @types/chart.js
-
 import { Chart } from 'chart.js';
-// import { Chart, CategoryScale, LinearScale, Title } from 'chart.js';
 
 // Sample data
 const data = {
