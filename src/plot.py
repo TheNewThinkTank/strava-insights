@@ -8,7 +8,7 @@ import seaborn as sns
 
 
 def get_run_data() -> pd.DataFrame:
-    df = pd.read_csv("activities.csv")
+    df = pd.read_csv("data/activities.csv")
     # print(df.head())
     # print(df.columns)
     df = df[df["Activity Type"] == "Run"]
