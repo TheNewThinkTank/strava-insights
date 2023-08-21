@@ -72,6 +72,7 @@ def average_speed_line_plot(df) -> None:
 
 
 def correlation_heatmap(df) -> None:
+    # TODO: fix df.corr() call issue
     correlation_matrix = df.corr()
 
     plt.figure(figsize=(8, 6))
