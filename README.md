@@ -9,4 +9,4 @@ Below: all runs uploaded to Strava
 
 [Requesting a bulk data export](https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export#h_01GG58HC4F1BGQ9PQZZVANN6WF)
 
-main file used in this project: `activities.csv`
+main file used in this project: `data/activities.csv`
