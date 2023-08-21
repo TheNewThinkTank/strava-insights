@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var fs = require("fs");
+var Papa = require("papaparse");
+var csvFilePath = 'data/activities.csv';
+var csvData = fs.readFileSync(csvFilePath, 'utf8');
+var parsedData = Papa.parse(csvData, { header: true });
+var activities = parsedData.data;
+var totalDistance = activities.reduce(function (sum, activity) { return sum + parseFloat(activity.Distance); }, 0);
+var averageSpeed = activities.reduce(function (sum, activity) { return sum + parseFloat(activity['Average Speed']); }, 0) / activities.length;
+console.log("totalDistance: ".concat(totalDistance));
+console.log("averageSpeed: ".concat(averageSpeed));
