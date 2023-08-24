@@ -21,18 +21,18 @@ new Chart(ctxActivities, {
       data: data.activityCounts,
       backgroundColor: 'rgba(75, 192, 192, 0.6)',
       borderColor: 'rgba(75, 192, 192, 1)',
-      borderWidth: 1,
-    }],
+      borderWidth: 1
+    }]
   },
   options: {
     scales: {
       x: { type: 'category' as const },
-      y: { beginAtZero: true },
+      y: { beginAtZero: true }
     },
     plugins: {
-      title: { display: true, text: 'Number of Activities per Month' },
-    },
-  },
+      title: { display: true, text: 'Number of Activities per Month' }
+    }
+  }
 })
 
 // Line Plot for Average Speed Over Time
@@ -47,16 +47,16 @@ new Chart(ctxAvgSpeed, {
       data: data.avgSpeed,
       borderColor: 'rgba(75, 192, 192, 1)',
       borderWidth: 2,
-      fill: false,
-    }],
+      fill: false
+    }]
   },
   options: {
     scales: {
       x: { type: 'category' as const },
-      y: { beginAtZero: true },
+      y: { beginAtZero: true }
     },
     plugins: {
-      title: { display: true, text: 'Average Speed Over Time' },
-    },
-  },
+      title: { display: true, text: 'Average Speed Over Time' }
+    }
+  }
 })
