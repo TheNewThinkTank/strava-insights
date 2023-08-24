@@ -1,4 +1,4 @@
-import { Chart } from 'chart.js';
+import { Chart } from 'chart.js'
 
 // Sample data
 const data = {
@@ -6,10 +6,10 @@ const data = {
   distance: [10, 15, 12], // Distance values
   avgSpeed: [5.0, 5.5, 6.0], // Average speed values
   activityCounts: [8, 10, 6], // Activity counts per month
-};
+}
 
 // Bar Plot for Activities Over Time
-const ctxActivities = document.getElementById('activities-chart') as HTMLCanvasElement;
+const ctxActivities = document.getElementById('activities-chart') as HTMLCanvasElement
 if (ctxActivities) {
   new Chart(ctxActivities, {
     type: 'bar',
@@ -32,11 +32,11 @@ if (ctxActivities) {
         title: { display: true, text: 'Number of Activities per Month' },
       },
     },
-  });
+  })
 }
 
 // Line Plot for Average Speed Over Time
-const ctxAvgSpeed = document.getElementById('avg-speed-chart') as HTMLCanvasElement;
+const ctxAvgSpeed = document.getElementById('avg-speed-chart') as HTMLCanvasElement
 if (ctxAvgSpeed) {
   new Chart(ctxAvgSpeed, {
     type: 'line',
@@ -59,5 +59,5 @@ if (ctxAvgSpeed) {
         title: { display: true, text: 'Average Speed Over Time' },
       },
     },
-  });
+  })
 }

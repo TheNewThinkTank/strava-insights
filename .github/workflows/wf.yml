@@ -13,7 +13,15 @@
         steps:
           - name: Check out code
             uses: actions/checkout@v3
-    
+
+          - name: npm ci
+            run: npm ci
+
+          # setup eslint config file locally first:
+          # npm init @eslint/config
+          - name: Run ESLint
+            run: npx eslint --ext .ts src/
+
           - name: Setup Python
             uses: actions/setup-python@v4
             with:
@@ -44,25 +52,3 @@
 
           - name: Lint with ruff
             run: poetry run ruff --ignore=F401 .
-
-          - name: npm ci
-            run: npm ci
-
-          # setup eslint config file locally first:
-          # npm init @eslint/config
-          - name: Run ESLint
-            run: npx eslint --ext .ts src/
-
-          # - uses: stefanoeb/eslint-action@1.0.2
-          #   with:
-          #     files: src/
-
-          # - uses: actions/setup-node@v3
-          #   with:
-          #     node-version: 18
-          #     cache: 'npm'
-          # # - run: npm ci
-          # # - run: npm test
-
-          # - name: Run ESLint
-          #   run: eslint src/ --ext .js,.jsx,.ts,.tsx
