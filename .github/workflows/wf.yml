@@ -45,6 +45,12 @@
           - name: Lint with ruff
             run: poetry run ruff --ignore=F401 .
 
+          - name: npm ci
+            run: npm ci
+
+          - name: Run ESLint
+            run: npx eslint --ext .ts src/
+
           # - uses: stefanoeb/eslint-action@1.0.2
           #   with:
           #     files: src/
