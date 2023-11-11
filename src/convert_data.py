@@ -24,7 +24,9 @@ def get_data(example):
     # ic(activity_type)
     original_date = date_match.group(1) if date_match else ""
     # ic(original_date)
-    activity_date = datetime.strptime(original_date, '%a, %m/%d/%Y').strftime('%b %d, %Y')
+    activity_date = datetime.strptime(original_date,
+                                      '%a, %m/%d/%Y'
+                                      ).strftime('%b %d, %Y')
     # ic(activity_date)
     elapsed_time = time_match.group(1) if time_match else ""
     # ic(elapsed_time)
@@ -47,7 +49,9 @@ def main():
     with open(csv_file_path, 'w', newline='') as wf:
         csv_writer = csv.writer(wf)
 
-        csv_writer.writerow(["Activity Date", "Activity Type", "Elapsed Time", "Distance"])
+        csv_writer.writerow(
+            ["Activity Date", "Activity Type", "Elapsed Time", "Distance"]
+            )
 
         for line in data_list:
             csv_writer.writerow(line)
