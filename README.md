@@ -27,13 +27,13 @@ running: `node src/calc.js`
 
 
 <p align="center">
-  <img src="img/2023_run_distances_bar_plot.png" width="300"/>
+  <img src="img/2023_run_distances_bar_plot.png" width="400"/>
 </p>
 
 <p align="center">
-  <img src="img/2022_run_distances_bar_plot.png" width="300"/>
+  <img src="img/2022_run_distances_bar_plot.png" width="400"/>
 </p>
 
 <p align="center">
-  <img src="img/2021_run_distances_bar_plot.png" width="300"/>
+  <img src="img/2021_run_distances_bar_plot.png" width="400"/>
 </p>
