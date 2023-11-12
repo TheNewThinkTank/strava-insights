@@ -16,6 +16,9 @@ def get_run_data(in_file, year, activity_type) -> pd.DataFrame:
         df["Activity Date"], format="%b %d, %Y, %H:%M:%S %p", errors="coerce"
     )
     df = df[df["Activity Date"].dt.year == year]
+
+    df = df[df["Distance"] != 0]
+
     df = df[
         # ["Activity Date", "Elapsed Time", "Distance", "Moving Time", "Average Speed"]
         ["Activity Date", "Elapsed Time", "Distance"]
