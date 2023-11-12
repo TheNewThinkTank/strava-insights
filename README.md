@@ -29,6 +29,8 @@ running: `node src/calc.js`
 <p align="center">
   <img src="img/2023_first_half_run_distances_bar_plot.png" width="400"/>
   <img src="img/2023_second_half_run_distances_bar_plot.png" width="400"/>
+  <img src="img/2022_first_half_run_distances_bar_plot.png" width="400"/>
+  <img src="img/2022_second_half_run_distances_bar_plot.png" width="400"/
 </p>
 
 
