@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: npm ci
         run: npm ci
@@ -29,8 +29,7 @@ jobs:
           cache: pip
 
       - name: Install and cache poetry
-        run: |
-          curl -sSL https://install.python-poetry.org | python3 -
+        run: make install-poetry
         if: steps.cache.outputs.cache-hit != 'true'
 
       - name: Cache poetry dependencies
@@ -47,14 +46,21 @@ jobs:
           POETRY_VIRTUALENVS_IN_PROJECT: true
         if: steps.cache.outputs.cache-hit != 'true'
 
-      - name: run mypy
-        run: poetry run mypy .
+      - name: Cache mypy dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/mypy
+          key: ${{ runner.os }}-mypy-${{ hashFiles('**/mypy.ini') }}
+          restore-keys: ${{ runner.os }}-mypy-
+
+      - name: Static type checks with mypy
+        run: make static-type-checks
 
       - name: Lint with ruff
-        run: poetry run ruff --ignore=F401 .
+        run: make lint-ruff
 
-      - name: pytest
-        run: poetry run pytest --cov=./ --cov-report xml:cov.xml
+      - name: Run unit tests and make coverage report
+        run: make run-tests-and-coverage
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
