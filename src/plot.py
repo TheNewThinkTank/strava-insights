@@ -141,7 +141,12 @@ def main():
     years = [2021, 2022, 2023]
     half_years = [1, 2]
 
-    color_palettes = ["pastel", "dark", "colorblind"]
+    color_palettes = [
+        "pastel",
+        "dark",
+        "deep",
+        # "colorblind",
+        ]
 
     for idx, year in enumerate(years):
 
