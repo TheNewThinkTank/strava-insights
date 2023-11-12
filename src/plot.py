@@ -12,7 +12,9 @@ def get_run_data(in_file, year, activity_type) -> pd.DataFrame:
     # print(df.head())
     # print(df.columns)
     df = df[df["Activity Type"] == activity_type]
-    df["Activity Date"] = pd.to_datetime(df["Activity Date"], format="%b %d, %Y, %H:%M:%S %p", errors='coerce')
+    df["Activity Date"] = pd.to_datetime(
+        df["Activity Date"], format="%b %d, %Y, %H:%M:%S %p", errors="coerce"
+    )
     df = df[df["Activity Date"].dt.year == year]
     df = df[
         # ["Activity Date", "Elapsed Time", "Distance", "Moving Time", "Average Speed"]
@@ -73,13 +75,12 @@ def annual_distances_bar_plot(df, year, activity_type) -> None:
     plt.ylabel("Distance")
     plt.title(f"{activity_type} distances - {year}")
 
-
     # TODO: fix x labels and xaxis data offset
     # plt.xticks(rotation=45)
-    plt.xticks(# ticks=df.index,
-               # labels=df.index.strftime("%Y-%m-%d"),
-               rotation=45
-               )
+    plt.xticks(  # ticks=df.index,
+        # labels=df.index.strftime("%Y-%m-%d"),
+        rotation=45
+    )
 
     plt.tight_layout()
     # plt.show()
@@ -120,7 +121,6 @@ def pair_plot(df) -> None:
 
 
 def main():
-
     activity_type = "Run"
     years = [2021, 2022, 2023]
 
