@@ -1,21 +1,23 @@
 """Take manually downloaded Strava activities data,
-parse them transform them to fit with the data schema
+from the file: data/manual_entries.txt,
+parse and them transform them to fit with the data schema:
+"Activity Date","Activity Type","Elapsed Time","Distance"
 """
 
 import csv
 from datetime import datetime
+import os
 # from pprint import pprint as pp
 import re
-
 # from icecream import ic  # type: ignore
 
-activity_pattern = re.compile(r'\b(\w+)\b')
-date_pattern = re.compile(r'\b(\w{3}, \d{1,2}/\d{1,2}/\d{4})\b')
-time_pattern = re.compile(r'\b(\d{1,2}:\d{2})\b')
-distance_pattern = re.compile(r'\b(\d+(\.\d+)?) km\b')
 
+def transform_data(example):
+    activity_pattern = re.compile(r"\b(\w+)\b")
+    date_pattern = re.compile(r"\b(\w{3}, \d{1,2}/\d{1,2}/\d{4})\b")
+    time_pattern = re.compile(r"\b(\d{1,2}:\d{2})\b")
+    distance_pattern = re.compile(r"\b(\d+(\.\d+)?) km\b")
 
-def get_data(example):
     activity_match = activity_pattern.search(example)
     date_match = date_pattern.search(example)
     time_match = time_pattern.search(example)
@@ -24,9 +26,9 @@ def get_data(example):
     # ic(activity_type)
     original_date = date_match.group(1) if date_match else ""
     # ic(original_date)
-    activity_date = datetime.strptime(original_date,
-                                      '%a, %m/%d/%Y'
-                                      ).strftime('%b %d, %Y')
+    activity_date = datetime.strptime(original_date, "%a, %m/%d/%Y").strftime(
+        "%b %d, %Y"
+    )
     # ic(activity_date)
     elapsed_time = time_match.group(1) if time_match else ""
     # ic(elapsed_time)
@@ -34,27 +36,32 @@ def get_data(example):
     return activity_date, activity_type, elapsed_time, distance
 
 
-def main():
+def get_data(data_file):
     data_list = []
-
-    with open("data/manual_entries.txt", "r") as rf:
+    with open(data_file, "r") as rf:
         data = rf.readlines()
-    
     for line in data:
-        data_list.append(get_data(line))
-    
+        data_list.append(transform_data(line))
     # pp(data_list)
-    csv_file_path = 'data/activity_data.csv'
+    return data_list
 
-    with open(csv_file_path, 'w', newline='') as wf:
+
+def write_data(data_list) -> None:
+    csv_file_path = "data/activity_data.csv"
+    file_exists = os.path.exists(csv_file_path)
+    with open(csv_file_path, "a", newline="") as wf:
         csv_writer = csv.writer(wf)
-
-        csv_writer.writerow(
-            ["Activity Date", "Activity Type", "Elapsed Time", "Distance"]
+        if not file_exists:
+            csv_writer.writerow(
+                ["Activity Date", "Activity Type", "Elapsed Time", "Distance"]
             )
-
         for line in data_list:
             csv_writer.writerow(line)
+
+
+def main():
+    data_list = get_data("data/manual_entries.txt")
+    write_data(data_list)
 
 
 if __name__ == "__main__":
