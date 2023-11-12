@@ -34,20 +34,3 @@ running: `node src/calc.js`
   <img src="img/2021_first_half_run_distances_bar_plot.png" width="400"/>
   <img src="img/2021_second_half_run_distances_bar_plot.png" width="400"/>
 </p>
-
-
-
-<!-- Below: all runs uploaded to Strava
-![All Strava runs](img/all_runs.png) -->
-
-<!-- <p align="center">
-  <img src="img/2023_run_distances_bar_plot.png" width="400"/>
-</p>
-
-<p align="center">
-  <img src="img/2022_run_distances_bar_plot.png" width="400"/>
-</p>
-
-<p align="center">
-  <img src="img/2021_run_distances_bar_plot.png" width="400"/>
-</p> -->

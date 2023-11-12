@@ -142,10 +142,14 @@ def main():
     half_years = [1, 2]
 
     color_palettes = [
+        # "coolwarm",
         "pastel",
         "dark",
-        "deep",
+        "tab20",
+        # "deep",
         # "colorblind",
+        # "plasma",
+        # "inferno",
         ]
 
     for idx, year in enumerate(years):
