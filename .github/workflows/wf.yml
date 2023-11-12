@@ -54,7 +54,7 @@ jobs:
         run: poetry run ruff --ignore=F401 .
 
       - name: pytest
-        run: poetry run pytest
+        run: poetry run pytest --cov=./ --cov-report xml:cov.xml
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
