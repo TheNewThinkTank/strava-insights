@@ -52,3 +52,6 @@
 
           - name: Lint with ruff
             run: poetry run ruff --ignore=F401 .
+
+          - name: pytest
+            run: poetry run pytest
