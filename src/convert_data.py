@@ -1,7 +1,11 @@
 """Take manually downloaded Strava activities data,
 from the file: data/manual_entries.txt,
-parse and them transform them to fit with the data schema:
+parse and then transform them to fit with the data schema:
 "Activity Date","Activity Type","Elapsed Time","Distance"
+and finally write them to file: data/manual_activities.csv
+
+Note: only the date is parsed,
+and the activity time is given the default value of "00:00:00 PM"
 """
 
 import csv
@@ -28,7 +32,7 @@ def transform_data(example):
     # ic(original_date)
     activity_date = datetime.strptime(original_date, "%a, %m/%d/%Y").strftime(
         "%b %d, %Y"
-    )
+    ) + ", 00:00:00 PM"
     # ic(activity_date)
     elapsed_time = time_match.group(1) if time_match else ""
     # ic(elapsed_time)
@@ -46,10 +50,9 @@ def get_data(data_file):
     return data_list
 
 
-def write_data(data_list) -> None:
-    csv_file_path = "data/activity_data.csv"
-    file_exists = os.path.exists(csv_file_path)
-    with open(csv_file_path, "a", newline="") as wf:
+def write_data(data_list, out_file) -> None:
+    file_exists = os.path.exists(out_file)
+    with open(out_file, "a", newline="") as wf:
         csv_writer = csv.writer(wf)
         if not file_exists:
             csv_writer.writerow(
@@ -61,7 +64,7 @@ def write_data(data_list) -> None:
 
 def main():
     data_list = get_data("data/manual_entries.txt")
-    write_data(data_list)
+    write_data(data_list, "data/manual_activities.csv")
 
 
 if __name__ == "__main__":
