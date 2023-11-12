@@ -7,7 +7,18 @@ import pandas as pd  # type: ignore
 import seaborn as sns  # type: ignore
 
 
-def get_run_data(in_file, year, activity_type) -> pd.DataFrame:
+# TODO: split annual data into quarters
+
+
+def bisect_year(half_year):
+    halfyear_months = {
+        1: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+        2: ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    }
+    return halfyear_months[half_year]
+
+
+def get_run_data(in_file, year, activity_type, half_year) -> pd.DataFrame:
     df = pd.read_csv(in_file)
     # print(df.head())
     # print(df.columns)
@@ -18,6 +29,9 @@ def get_run_data(in_file, year, activity_type) -> pd.DataFrame:
     df = df[df["Activity Date"].dt.year == year]
 
     df = df[df["Distance"] != 0]
+
+    months = bisect_year(half_year)
+    df = df[df["Activity Date"].dt.strftime('%b').isin(months)]
 
     df = df[
         # ["Activity Date", "Elapsed Time", "Distance", "Moving Time", "Average Speed"]
@@ -71,26 +85,22 @@ def monthly_activity_count_bar_plot(df, year) -> None:
     # plt.savefig(f"img/{year}_activities_over_time_bar_plot.png")
 
 
-def annual_distances_bar_plot(df, year, activity_type) -> None:
+def annual_distances_bar_plot(df, year, activity_type, half_year) -> None:
+
+    year_part = "first" if half_year == 1 else "second"
+
     plt.figure(figsize=(10, 6))
     sns.barplot(x=df.index, y=df["Distance"].values)
     plt.xlabel("Date")
     plt.ylabel("Distance [km]")
-    plt.title(f"{activity_type} distances - {year}")
+    plt.title(f"{activity_type} distances - {year} {year_part} half")
 
     # print(df.index)
-
-    # TODO: fix x labels and xaxis data offset
     plt.xticks(rotation=45, ha="right")
-    # plt.xticks(
-    #     ticks=df.index,
-    #     # labels=df.index,  # .strftime("%Y-%m-%d"),
-    #     rotation=45
-    # )
 
     plt.tight_layout()
     # plt.show()
-    plt.savefig(f"img/{year}_{activity_type.lower()}_distances_bar_plot.png")
+    plt.savefig(f"img/{year}_{year_part}_half_{activity_type.lower()}_distances_bar_plot.png")
 
 
 def average_speed_line_plot(df) -> None:
@@ -129,12 +139,14 @@ def pair_plot(df) -> None:
 def main():
     activity_type = "Run"
     years = [2021, 2022, 2023]
+    half_years = [1, 2]
 
     for year in years:
-        df_bulk = get_run_data("data/activities.csv", year, activity_type)
-        df_manual = get_run_data("data/manual_activities.csv", year, activity_type)
-        df = merge_dfs(df_bulk, df_manual)
-        annual_distances_bar_plot(df, year, activity_type)
+        for half_year in half_years:
+            df_bulk = get_run_data("data/activities.csv", year, activity_type, half_year)
+            df_manual = get_run_data("data/manual_activities.csv", year, activity_type, half_year)
+            df = merge_dfs(df_bulk, df_manual)
+            annual_distances_bar_plot(df, year, activity_type, half_year)
 
     # print(df.head())
     # print(df.columns)
