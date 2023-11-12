@@ -25,6 +25,15 @@ running: `node src/calc.js`
 <!-- Below: all runs uploaded to Strava
 ![All Strava runs](img/all_runs.png) -->
 
-![2023 Strava runs](img/2023_run_distances_bar_plot.png)
-![2022 Strava runs](img/2022_run_distances_bar_plot.png)
-![2021 Strava runs](img/2021_run_distances_bar_plot.png)
+
+<p align="center">
+  <img src="img/2023_run_distances_bar_plot.png" width="300"/>
+</p>
+
+<p align="center">
+  <img src="img/2022_run_distances_bar_plot.png" width="300"/>
+</p>
+
+<p align="center">
+  <img src="img/2021_run_distances_bar_plot.png" width="300"/>
+</p>
