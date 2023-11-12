@@ -141,7 +141,12 @@ def main():
     years = [2021, 2022, 2023]
     half_years = [1, 2]
 
-    for year in years:
+    color_palettes = ["pastel", "dark", "colorblind"]
+
+    for idx, year in enumerate(years):
+
+        sns.set_palette(sns.color_palette(color_palettes[idx]))
+
         for half_year in half_years:
             df_bulk = get_run_data("data/activities.csv", year, activity_type, half_year)
             df_manual = get_run_data("data/manual_activities.csv", year, activity_type, half_year)
