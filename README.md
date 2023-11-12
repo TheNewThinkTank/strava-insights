@@ -1,7 +1,6 @@
 ![commit activity](https://img.shields.io/github/commit-activity/m/TheNewThinkTank/strava-insights)
 ![CI](https://github.com/TheNewThinkTank/strava-insights/actions/workflows/wf.yml/badge.svg)
 [![GitHub repo size](https://img.shields.io/github/repo-size/TheNewThinkTank/strava-insights?style=flat&logo=github&logoColor=whitesmoke&label=Repo%20Size)](https://github.com/TheNewThinkTank/strava-insights/archive/refs/heads/main.zip)
-
 [![codecov](https://codecov.io/gh/TheNewThinkTank/strava-insights/branch/main/graph/badge.svg)](https://codecov.io/gh/TheNewThinkTank/strava-insights)
 
 # strava-insights
