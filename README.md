@@ -13,12 +13,17 @@ Analysis and visualization of Strava activities
 
 ## Usage
 
+<details>
+  <summary>calculating statistics and creating figures</summary>
+
 running the Python module to create figures:<br>
 `python3 src/plot.py`
 
 running the TypeScript module to calculate statistics:<br>
 compilation: `tsc src/calc.ts`<br>
 running: `node src/calc.js`
+
+</details>
 
 ## Plots
 
