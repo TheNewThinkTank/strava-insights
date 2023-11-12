@@ -72,15 +72,18 @@ def annual_distances_bar_plot(df, year, activity_type) -> None:
     plt.figure(figsize=(10, 6))
     sns.barplot(x=df.index, y=df["Distance"].values)
     plt.xlabel("Date")
-    plt.ylabel("Distance")
+    plt.ylabel("Distance [km]")
     plt.title(f"{activity_type} distances - {year}")
 
+    # print(df.index)
+
     # TODO: fix x labels and xaxis data offset
-    # plt.xticks(rotation=45)
-    plt.xticks(  # ticks=df.index,
-        # labels=df.index.strftime("%Y-%m-%d"),
-        rotation=45
-    )
+    plt.xticks(rotation=45, ha="right")
+    # plt.xticks(
+    #     ticks=df.index,
+    #     # labels=df.index,  # .strftime("%Y-%m-%d"),
+    #     rotation=45
+    # )
 
     plt.tight_layout()
     # plt.show()
