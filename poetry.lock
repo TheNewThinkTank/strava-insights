@@ -233,6 +233,18 @@ docs = ["ipython", "matplotlib", "numpydoc", "sphinx"]
 tests = ["pytest", "pytest-cov", "pytest-xdist"]
 
 [[package]]
+name = "datetime-convertion-tools"
+version = "0.0.5"
+description = "Common datetime operations"
+category = "main"
+optional = false
+python-versions = "<4.0,>=3.11"
+files = [
+    {file = "datetime_convertion_tools-0.0.5-py3-none-any.whl", hash = "sha256:ae22d1cccce154fe53e9b408153fe68780ad37aa8bca92d3fc6306a48bc490a7"},
+    {file = "datetime_convertion_tools-0.0.5.tar.gz", hash = "sha256:e22004247ed842890dedd608184ed2559d9a8646c86dafa985c88dae3791c0f0"},
+]
+
+[[package]]
 name = "executing"
 version = "2.0.1"
 description = "Get the currently executing AST node of a frame, and other information"
@@ -1003,4 +1015,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "fa3534d6af31adf9022958033498a0bfc56d6f92078ecfdb0e884de8c26a77c8"
+content-hash = "7f1293d47f8efff37afd1c33ba02f52b95671544a1b4f4f0dc88d41c457ba8af"

@@ -5,17 +5,10 @@ Analyze and plot strava activities
 import matplotlib.pyplot as plt  # type: ignore
 import pandas as pd  # type: ignore
 import seaborn as sns  # type: ignore
+from datetime_tools.bisect_year import bisect_year  # type: ignore
 
 
 # TODO: split annual data into quarters
-
-
-def bisect_year(half_year):
-    halfyear_months = {
-        1: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-        2: ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    }
-    return halfyear_months[half_year]
 
 
 def get_run_data(in_file, year, activity_type, half_year) -> pd.DataFrame:
