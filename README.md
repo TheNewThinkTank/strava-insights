@@ -4,6 +4,7 @@
 [![codecov](https://codecov.io/gh/TheNewThinkTank/strava-insights/branch/main/graph/badge.svg)](https://codecov.io/gh/TheNewThinkTank/strava-insights)
 
 # strava-insights
+
 Analysis and visualization of Strava activities
 
 ## Data
@@ -34,3 +35,10 @@ running: `node src/calc.js`
   <img src="img/2021_first_half_run_distances_bar_plot.png" width="400"/>
   <img src="img/2021_second_half_run_distances_bar_plot.png" width="400"/>
 </p>
+
+
+## Running routes
+
+- The central lakes
+- [The Blue Circle / the harbor circle](https://www.visitcopenhagen.com/copenhagen/planning/harbour-circle-gdk1117372)
+- [Forest and Highway trail skovlunde](https://www.mypacer.com/routes/56211/forest-and-highway-walk-trail-skovlunde-capital-region-of-denmark-denmark)
