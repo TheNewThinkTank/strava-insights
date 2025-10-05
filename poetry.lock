@@ -290,14 +290,14 @@ tests = ["pytest", "pytest-cov", "pytest-xdist"]
 
 [[package]]
 name = "datetime-convertion-tools"
-version = "0.0.5"
+version = "0.0.7"
 description = "Common datetime operations"
 optional = false
 python-versions = "<4.0,>=3.11"
 groups = ["main"]
 files = [
-    {file = "datetime_convertion_tools-0.0.5-py3-none-any.whl", hash = "sha256:ae22d1cccce154fe53e9b408153fe68780ad37aa8bca92d3fc6306a48bc490a7"},
-    {file = "datetime_convertion_tools-0.0.5.tar.gz", hash = "sha256:e22004247ed842890dedd608184ed2559d9a8646c86dafa985c88dae3791c0f0"},
+    {file = "datetime_convertion_tools-0.0.7-py3-none-any.whl", hash = "sha256:7f4b14546ce863831cf0ea8c96fc9d844b009de7fa271b6068d0cc6ea9de214b"},
+    {file = "datetime_convertion_tools-0.0.7.tar.gz", hash = "sha256:8c2a747dbe4802073494cab10333c9b9794dd88b647b1c11fdfd27da20016b6e"},
 ]
 
 [[package]]
@@ -1146,4 +1146,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.12"
-content-hash = "a337cc82faa9718b73126d8f14ad5e8e93179f101285d60fb25b41ab80c676ca"
+content-hash = "e461cbef49b5428280c90138066b978b41b4dfad952036b50f8105b4cac70cfc"

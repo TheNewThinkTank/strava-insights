@@ -19,7 +19,7 @@ seaborn = "^0.13.2"
 icecream = "^2.1.5"
 pytest = "^7.4.3"
 pytest-cov = "^7.0.0"
-datetime-convertion-tools = "^0.0.5"
+datetime-convertion-tools = "^0.0.7"
 
 [build-system]
 requires = ["poetry-core"]
