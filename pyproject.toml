@@ -11,7 +11,7 @@ packages = []
 python = "^3.12"
 mypy = "^1.18.2"
 ruff = "^0.14.10"
-isort = "^7.0.0"
+isort = ">=7,<9"
 black = "^25.1.0"
 matplotlib = "^3.10.7"
 pandas = "^2.3.3"
